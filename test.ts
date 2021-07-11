@@ -23,5 +23,4 @@ const observerSync = new Observable<number>(subscriber => {
   return () => undefined;
 });
 
-
-const subSync = observerSync.subscribe(new Observer(x => console.log(x)));
+observerSync.subscribe(new Observer(x => console.log(x)));

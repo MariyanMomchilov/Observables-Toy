@@ -13,7 +13,7 @@ export class Subscriber<T> {
     if (this.completed)
       return;
 
-    throw err
+    throw err;
   }
 
   complete() {

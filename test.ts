@@ -45,3 +45,6 @@ const isDegreeOf2 = (value: number) => {
 }
 const filteredObservable = mappedObservable.filter(isDegreeOf2);
 filteredObservable.subscribe(new Observer(console.log));
+
+const tappedObservable = mappedObservable.tap(x => console.log(`x = ${x}`));
+tappedObservable.subscribe(new Observer(console.log));

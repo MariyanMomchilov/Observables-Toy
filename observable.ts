@@ -1,5 +1,5 @@
 import { Observer } from "./observer";
-import { FilterFn, MapFn, SubscribeCallback } from "./types";
+import { FilterFn, MapFn, NextMethod, SubscribeCallback, TapFn } from "./types";
 
 export class Observable<T> {
   private push: SubscribeCallback<T>;
@@ -33,6 +33,17 @@ export class Observable<T> {
         subscriber.error,
         subscriber.complete,
       ));
+    });
+  }
+
+  tap(proc: TapFn<T>) {
+    return new Observable<T>(subscriber => {
+      return this.push(new Observer(x => {
+        proc(x);
+        subscriber.next(x);
+      },
+        subscriber.error,
+        subscriber.complete));
     });
   }
 }

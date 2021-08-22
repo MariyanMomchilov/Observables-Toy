@@ -8,3 +8,4 @@ export type SubscribeCallback<T> = (subscriber: Subscriber<T>) => () => void;
 
 export type MapFn<T> = (value: T) => any;
 export type FilterFn<T> = (value: T) => boolean;
+export type TapFn<T> = NextMethod<T>;
